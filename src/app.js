@@ -5,6 +5,7 @@ const app = express()
 //rotas
 const index = require("./routes/index")
 const tarefas = require("./routes/tarefasRoute")
+const colaboradoras = require("./routes/colaboradorasRoute")
 
 //configurar body parser
 app.use(bodyParser.json());
@@ -21,5 +22,6 @@ app.use(function (req, res, next) {
 
 app.use("/", index)
 app.use("/tarefas", tarefas)
+app.use("/colaboradoras", require("./routes/colaboradorasRoute"))
 
 module.exports = app
