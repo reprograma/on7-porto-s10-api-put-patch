@@ -1,4 +1,4 @@
-const tarefas = require("../model/tarefas.json");
+const tarefas = require("../models/tarefas.json");
 const fs = require("fs");
 const { resourceUsage } = require("process");
 
@@ -18,7 +18,7 @@ const postTarefa = (req, res) => {
   const { id, dataInclusao, concluido, descricao, nomeColaboradora } = req.body;
   tarefas.push({ id, dataInclusao, concluido, descricao, nomeColaboradora });
 
-  fs.writeFile("./src/model/tarefas.json", JSON.stringify(tarefas), 'utf8', function(err) {
+  fs.writeFile("./src/models/tarefas.json", JSON.stringify(tarefas), 'utf8', function(err) {
     if (err) {
       return res.status(424).send({ message: err });
     }
@@ -34,7 +34,7 @@ const deleteTarefa = (req, res) => {
   const index = tarefas.indexOf(tarefaFiltrada);
   tarefas.splice(index, 1);
 
-  fs.writeFile("./src/model/tarefas.json", JSON.stringify(tarefas), 'utf8', function(err) {
+  fs.writeFile("./src/models/tarefas.json", JSON.stringify(tarefas), 'utf8', function(err) {
     if (err) {
       return res.status(424).send({ message: err });
     }
@@ -51,7 +51,7 @@ const deleteTarefaConcluida = (req, res) => {
     tarefas.splice(index, 1);
   }
 
-  fs.writeFile("./src/model/tarefas.json", JSON.stringify(tarefas), 'utf8', function(err) {
+  fs.writeFile("./src/models/tarefas.json", JSON.stringify(tarefas), 'utf8', function(err) {
     if (err) {
       return res.status(424).send({ message: err });
     }
